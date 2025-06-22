@@ -24,7 +24,7 @@ The dataset covers:
 To prepare the dataset for training with the T5-base model (220M parameters), the following steps were applied:
 
 - *Dataset Split*: 80% training, 10% validation, 10% test
-- *Text Normalization*: Lowercased text, removed extra spaces and special characters
+- *Text Normalisation*: Lowercased text, removed extra spaces and special characters
 - *Tokenization*: Used T5-base tokenizer with a maximum sequence length of 128 tokens
 - *Input Format*: "generate irrigation advice: [query]"
 - *Quality Checks*: Removed duplicates, ensured query diversity
@@ -69,35 +69,99 @@ Example responses from the chatbot:
 | Farmer Question                                   | Chatbot Response                                                                 |
 |---------------------------------------------------|----------------------------------------------------------------------------------|
 | How do I irrigate maize?                          | For maize, drip irrigation is recommended to conserve water and ensure even distribution. |
-| What’s the best way to conserve water for farming?| Use mulching and rainwater harvesting to reduce evaporation and maximize efficiency. |
+| What’s the best way to conserve water for farming?| Use mulching and rainwater harvesting to reduce evaporation and maximise efficiency. |
 | Why is training important for biogas technology?  | Proper training ensures operators can maintain biogas systems efficiently and safely. |
 
 ## Web App Integration
 
 The chatbot is available through a simple web interface built with React and Tailwind CSS. It includes two user-friendly components:
 
-1. *General Query Box* – for short, everyday irrigation questions
-2. *Detailed Prompt Box* – for more technical or comprehensive irrigation inquiries
+1. *General Query Box* – for short, everyday irrigation questions  
+2. *Detailed Prompt Box* – for more technical or comprehensive irrigation inquiries  
 
 This dual-approach makes it accessible for both novice and experienced users.
 
 ## Deployment
 
-- *Frontend*: React + Tailwind CSS
-- *Backend*: Hugging Face Transformers (T5-base)
-- *Deployment Platform*: Vercel
+- *Frontend*: React + Tailwind CSS  
+- *Backend*: Hugging Face Transformers (T5-base)  
+- *Deployment Platform*: Vercel  
+
+## Run the Model
+
+To run Shamba IrrigationBot locally, follow the steps below:
+
+### Prerequisites
+
+Ensure the following are installed:
+
+- Python 3.8+  
+- pip  
+- Node.js and npm  
+- Git  
+
+### Backend Setup
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/Kylapurity/Irrigation_ChatBot.git
+cd Irrigation_ChatBot
+````
+
+2. **Create and activate a virtual environment**
+
+```bash
+python -m venv venv
+source venv/bin/activate       # For Windows: venv\Scripts\activate
+```
+
+3. **Install backend dependencies**
+
+```bash
+cd Backend\ & Notebook
+pip install -r requirements.txt
+```
+
+4. **Run the backend server**
+
+```bash
+python irrigation_bot_api.py
+```
+
+This will start the T5 model-based backend that handles farmer queries.
+
+### Frontend Setup
+
+1. **Navigate to the frontend directory**
+
+```bash
+cd ../Frontend_IrrigationBot
+```
+
+2. **Install frontend dependencies**
+
+```bash
+npm install
+```
+
+3. **Start the frontend**
+
+```bash
+npm run dev
+```
+
 
 ## Challenges and Lessons
 
-- Initially used an unrelated dataset, which led to poor results; switched to a domain-specific irrigation dataset.
-- Required extensive text normalization to clean inconsistencies.
-- Faced resource limits on Google Colab, which ruled out T5-large due to GPU crashes.
-- Learned that smaller models like T5-small often performed better in resource-constrained environments but sometimes at the cost of coherence.
+* Initially used an unrelated dataset, which led to poor results; switched to a domain-specific irrigation dataset.
+* Required extensive text normalization to clean inconsistencies.
+* Faced resource limits on Google Colab, which ruled out T5-large due to GPU crashes.
+* Learned that smaller models like T5-small often performed better in resource-constrained environments but sometimes at the cost of coherence.
 
 ## Conclusion
 
-This project demonstrates that with the right dataset, preprocessing, and training strategy, it is possible to build a practical AI tool to support small-scale farmers. The Shamba IrrigationBot offers a scalable, easy-to-use solution that can significantly enhance agricultural 
-productivity in rural settings.
+This project demonstrates that with the right dataset, preprocessing, and training strategy, it is possible to build a practical AI tool to support small-scale farmers. The Shamba IrrigationBot offers a scalable, easy-to-use solution that can significantly enhance agricultural productivity in rural settings.
 
 ## Example conversation With Shamba Bot
 
@@ -106,5 +170,7 @@ productivity in rural settings.
 
 ## Demo Video
 
+```
 
+---
 
