@@ -169,8 +169,5 @@ This project demonstrates that with the right dataset, preprocessing, and traini
 ![Screenshot (1012)](https://github.com/user-attachments/assets/01967b73-12a1-4614-bcdf-44706ff07847)
 
 ## Demo Video
-
-```
-
----
+https://youtu.be/mUbU4yOqQ7o
 
