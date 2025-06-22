@@ -34,6 +34,7 @@ const irrigationInfo = [
     description: "Complete guidance on drip, sprinkler, and micro-irrigation systems"
   }
 ];
+
 const Chat = ({ onLogout }) => {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
@@ -55,7 +56,7 @@ const Chat = ({ onLogout }) => {
           : firstUserMessage.text;
         
         const newChatEntry = {
-          id: `chat_${Date.now()}`,
+          id: chat_${Date.now()},
           date: currentDate,
           topic: topic,
           preview: firstUserMessage.text,
@@ -101,42 +102,27 @@ const Chat = ({ onLogout }) => {
       setIsLoading(true);
 
       try {
-        // First check if question exists in CSV
-        const csvCheck = await checkQuestionInCSV(inputMessage);
+        const response = await fetch('http://127.0.0.1:8000/predict', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ question: inputMessage })
+        });
         
-        if (csvCheck.found) {
-          // Question found in CSV, use the answer directly
-          const botMessage = {
-            id: messages.length + 2,
-            text: csvCheck.answer,
-            sender: 'bot',
-            timestamp: new Date().toLocaleTimeString()
-          };
-          setMessages(prev => [...prev, botMessage]);
-        } else {
-          // Question not found in CSV, send to backend
-          const response = await fetch('http://127.0.0.1:8000/predict', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ question: inputMessage })
-          });
-          
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          
-          const data = await response.json();
-          const botResponseText = data.response || "No response received";
-          
-          const botMessage = {
-            id: messages.length + 2,
-            text: botResponseText,
-            sender: 'bot',
-            timestamp: new Date().toLocaleTimeString()
-          };
-          
-          setMessages(prev => [...prev, botMessage]);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
+        
+        const data = await response.json();
+        const botResponseText = data.response || "No response received";
+        
+        const botMessage = {
+          id: messages.length + 2,
+          text: botResponseText,
+          sender: 'bot',
+          timestamp: new Date().toLocaleTimeString()
+        };
+        
+        setMessages(prev => [...prev, botMessage]);
       } catch (error) {
         console.error('Error sending message:', error);
         const errorMessage = {
@@ -321,7 +307,7 @@ const Chat = ({ onLogout }) => {
           {messages.map((message) => (
             <div
               key={message.id}
-              className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+              className={flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}}
             >
               <div
                 className={`max-w-xs lg:max-w-md px-4 py-2 rounded-2xl ${
