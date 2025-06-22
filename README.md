@@ -62,14 +62,6 @@ Ten experiments were conducted to tune performance. Below is a summary of the re
 | 9          | T5-small | Adam      | 8          | 6e-5           | 512        | Max     | 0.45 | 0.57 | 0.53   | 45     |
 | 10         | T5-base  | Nadam     | 8          | 4e-5           | 256        | Max     | 0.11 | 0.33 | 0.48   | 20     |
 
-## Evaluation
-
-### Quantitative Results
-
-- *Best BLEU Score*: 0.48 (T5-small)
-- *Best F1 Score*: 0.67 (T5-small)
-- *Best ROUGE Score*: 0.60 (T5-small)
-
 ### Qualitative Testing
 
 Example responses from the chatbot:
@@ -104,4 +96,15 @@ This dual-approach makes it accessible for both novice and experienced users.
 
 ## Conclusion
 
-This project demonstrates that with the right dataset, preprocessing, and training strategy, it is possible to build a practical AI tool to support small-scale farmers. The Shamba IrrigationBot offers a scalable, easy-to-use solution that can significantly enhance agricultural productivity in rural settings.
+This project demonstrates that with the right dataset, preprocessing, and training strategy, it is possible to build a practical AI tool to support small-scale farmers. The Shamba IrrigationBot offers a scalable, easy-to-use solution that can significantly enhance agricultural 
+productivity in rural settings.
+
+## Example conversation With Shamba Bot
+
+![Screenshot (1010)](https://github.com/user-attachments/assets/b20c1767-0afa-40e5-88d6-001e54dd7074)
+![Screenshot (1012)](https://github.com/user-attachments/assets/01967b73-12a1-4614-bcdf-44706ff07847)
+
+## Demo Video
+
+
+
